@@ -257,7 +257,7 @@ EOD
     }
     elsif ($program eq 'cd-hit') { # use psi-cd-hit
       $cmd_str .=<<EOD;
-$NGS_cdhit_dir/psi-cd-hit/psi-cd-hit.pl -i $JOBID.fas.$im1 -o $JOBID.fas.$i -c $iden -P $NGS_blast_dir -core 4
+$NGS_cdhit_dir/psi-cd-hit/psi-cd-hit.pl -i $JOBID.fas.$im1 -o $JOBID.fas.$i -c $iden -P $NGS_blast_dir -para 4
 rm -rf $JOBID.fas.$im1-bl
 EOD
     }
