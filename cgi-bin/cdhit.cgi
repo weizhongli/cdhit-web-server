@@ -156,10 +156,10 @@ EOD
 faa_stat.pl $JOBID.fas.db2
 $NGS_cdhit_dir/$program -i $db1_fname -i2 $JOBID.fas.db2 -o $JOBID.fas.db2novel -c $iden -n $wsize $parameters -T 4 -M 32000
 $NGS_cdhit_dir/clstr_sort_by.pl no < $JOBID.fas.db2novel.clstr > $JOBID.fas.db2novel.clstr.sorted
-clstr_list.pl $JOBID.fas.db2novel.clstr $JOBID.clstr.dump
-clstr_list_sort.pl $JOBID.clstr.dump $JOBID.clstr_no.dump
-clstr_list_sort.pl $JOBID.clstr.dump $JOBID.clstr_len.dump len
-clstr_list_sort.pl $JOBID.clstr.dump $JOBID.clstr_des.dump des
+$NGS_cdhit_dir/clstr_list.pl $JOBID.fas.db2novel.clstr $JOBID.clstr.dump
+$NGS_cdhit_dir/clstr_list_sort.pl $JOBID.clstr.dump $JOBID.clstr_no.dump
+$NGS_cdhit_dir/clstr_list_sort.pl $JOBID.clstr.dump $JOBID.clstr_len.dump len
+$NGS_cdhit_dir/clstr_list_sort.pl $JOBID.clstr.dump $JOBID.clstr_des.dump des
 gnuplot1.pl < $JOBID.fas.db2novel.clstr > $JOBID.fas.db2novel.clstr.1; gnuplot2.pl $JOBID.fas.db2novel.clstr.1 $JOBID.fas.db2novel.clstr.1.png
 tar -zcf $JOBID.result.tar.gz * --exclude=*.dump --exclude=*.env
 echo hello > $JOBID.ok
@@ -264,7 +264,7 @@ EOD
     $cmd_str .= <<EOD;
 faa_stat.pl $JOBID.fas.$i
 $NGS_cdhit_dir/clstr_sort_by.pl no < $JOBID.fas.$i.clstr > $JOBID.fas.$i.clstr.sorted
-clstr_list.pl $JOBID.fas.$i.clstr $JOBID.clstr.dump
+$NGS_cdhit_dir/clstr_list.pl $JOBID.fas.$i.clstr $JOBID.clstr.dump
 gnuplot1.pl < $JOBID.fas.$i.clstr > $JOBID.fas.$i.clstr.1; gnuplot2.pl $JOBID.fas.$i.clstr.1 $JOBID.fas.$i.clstr.1.png
 EOD
     $cmd_str .= <<EOD if  ($i == 2);
@@ -278,14 +278,14 @@ EOD
   }
     
   $cmd_str .= <<EOD;
-clstr_list_sort.pl $JOBID.clstr.dump $JOBID.clstr_no.dump
-clstr_list_sort.pl $JOBID.clstr.dump $JOBID.clstr_len.dump len
-clstr_list_sort.pl $JOBID.clstr.dump $JOBID.clstr_des.dump des
+$NGS_cdhit_dir/clstr_list_sort.pl $JOBID.clstr.dump $JOBID.clstr_no.dump
+$NGS_cdhit_dir/clstr_list_sort.pl $JOBID.clstr.dump $JOBID.clstr_len.dump len
+$NGS_cdhit_dir/clstr_list_sort.pl $JOBID.clstr.dump $JOBID.clstr_des.dump des
 EOD
   if ($level==1 && $q->param("anno")==1){ #for current version, only level 1 have annotion info incorporated
     $cmd_str .= <<EOD;
-FET.pl $JOBID.fas.1.clstr $JOBID.fas.1.clstr.anno $JOBID.fas.1.clstr.anno_len.dump 2>$JOBID.fas.1.clstr.anno.err
-FET.pl $JOBID.fas.1.clstr.sorted $JOBID.fas.1.clstr.sorted.anno $JOBID.fas.1.clstr.anno_no.dump 2>$JOBID.fas.1.clstr.sorted.anno.err
+$NGS_cdhit_dir/FET.pl $JOBID.fas.1.clstr $JOBID.fas.1.clstr.anno $JOBID.fas.1.clstr.anno_len.dump 2>$JOBID.fas.1.clstr.anno.err
+$NGS_cdhit_dir/FET.pl $JOBID.fas.1.clstr.sorted $JOBID.fas.1.clstr.sorted.anno $JOBID.fas.1.clstr.anno_no.dump 2>$JOBID.fas.1.clstr.sorted.anno.err
 EOD
   }
   $cmd_str .= <<EOD;
