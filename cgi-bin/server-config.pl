@@ -26,6 +26,13 @@ $SL_session_dir     = "/home/oasis/webcomp/web-session";
 $SL_rammcap_dir     = "/home/data/webcomp/RAMMCAP-ann";
 $SL_bin_dir         = "$SL_rammcap_dir/bin";
 
+#### If can not set up SGE envs within Apache
+$ENV{SGE_CELL} ='default';
+$ENV{SGE_ARCH} ='lx26-amd64';
+$ENV{SGE_EXECD_PORT} ='537';
+$ENV{SGE_QMASTER_PORT} ='536';
+$ENV{SGE_ROOT} ='/opt/gridengine';
+
 #$qsub_exe = "/opt/sge6/bin/linux-x64/qsub";
 $qsub_exe = "/opt/gridengine/bin/lx26-amd64/qsub";
 
