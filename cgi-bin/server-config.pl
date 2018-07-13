@@ -16,6 +16,7 @@ $qsub_local = <<EOD;
 #\$ -v PERL5LIB=/home/hying/programs/Perl_Lib
 #\$ -q all.q
 #\$ -pe orte 4
+#\$ -l h_rt=24:00:00
 EOD
 
 
@@ -46,5 +47,6 @@ $qsub_local = <<EOD;
 #\$ -v PERL5LIB=/home/hying/programs/Perl_Lib
 #\$ -q cdhit_webserver.q
 ##\$ -pe orte 4
+#\$ -l h_rt=24:00:00
 EOD
 
