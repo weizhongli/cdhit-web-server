@@ -22,6 +22,15 @@ Apache, the location of config file is different. for example
             AllowOverride None
         </Directory>
 
+for some version of Apache2, you may need to 
+   cd /etc/apache2/mods-enabled; 
+   ln -s ../mods-available/cgid* . 
+
 3) download most up to date cd-hit and compile
 4) download NCBI blast+ package
 5) Edit cgi-bin/server-config
+6) READ output.README 
+   to create a symbolic to a job dir (e.g. ln -s /path_to_job_dir output) 
+7) some perl modules maybe no longer standard for some Linux 
+   e.g. Switch.pm. try
+   sudo apt-get install libswitch-perl

@@ -1,4 +1,7 @@
 output directory hold user jobs, it can can be a directory or a symbolic link to another directory. 
 We suggest to use symbolic link.
 
+within the cdhit-web-server directory
+ln -s /path_to_job_dir output
+
 Important: the web server user (e.g. apache) need to have read/write permission to the output director

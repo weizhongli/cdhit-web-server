@@ -201,7 +201,7 @@ EOD
 
   # submit the job
   #my $cmd = `/opt/gridengine/bin/lx26-amd64/qsub $sh_fname > $JOBDIR/$JOBID.qsub.dump`;
-  my $cmd = `$qsub_exe 1>$JOBDIR/$JOBID.qsub.dump 2>$JOBDIR/$JOBID.qsub.err.dump`;
+  my $cmd = `$qsub_exe $sh_fname 1>$JOBDIR/$JOBID.qsub.dump 2>$JOBDIR/$JOBID.qsub.err.dump`;
 
   # return jobid
   return $JOBID;
