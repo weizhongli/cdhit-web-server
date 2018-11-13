@@ -407,6 +407,8 @@ sub check_parameters{
 
   if ($q->param('lb') =~ /^\d+$/){$resu .= " -b ".$q->param('lb'); }
   else{return "Error: -b should be an integer";}
+  if ($q->param('ll') =~ /^\d+$/){$resu .= " -l ".$q->param('ll'); }
+  else{return "Error: -l should be an integer";}
 
   ###############
   # Align_Field
