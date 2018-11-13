@@ -368,6 +368,9 @@ sub Algo_Field{
   push @columns, Tr(td({-width=>$table_l1}, "-b: bandwidth of alignment".help_object("Alignment"))
                    .td(textfield(-name=>"lb", -size=>"4", -value=>"20")));
   push @columns, help_box("Alignment", "Band width of alignment, should be a positive integer");
+  push @columns, Tr(td({-width=>$table_l1}, "-l: length of sequence to skip".help_object("Skipshortseq"))
+                   .td(textfield(-name=>"ll", -size=>"4", -value=>"10")));
+  push @columns, help_box("Skipshortseq", "Sequences below this length will be skipped");
   
   return fieldset({-id=>"AlgoPara"}, legend("Algorithm Parameters"), table( join(" ",@columns)));
 }  

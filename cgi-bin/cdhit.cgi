@@ -149,6 +149,8 @@ $qsub_local
 #\$ -e $JOBDIR/$JOBID.err
 #\$ -o $JOBDIR/$JOBID.out
 cd $JOBDIR
+sed -i "s/\\x0d/\\n/g" $db1_fname
+sed -i "s/\\x0d/\\n/g" $JOBID.fas.db2
 
 EOD
   $cmd_str .= "faa_stat.pl $JOBID.fas.db1\n" if ($q->param('which_db1') ne "1");
@@ -241,6 +243,8 @@ $qsub_local
 #\$ -e $JOBDIR/$JOBID.err
 #\$ -o $JOBDIR/$JOBID.out
 cd $JOBDIR
+sed -i "s/\\x0d/\\n/g" $JOBID.fas.0
+
 faa_stat.pl $JOBID.fas.0
 
 EOD
