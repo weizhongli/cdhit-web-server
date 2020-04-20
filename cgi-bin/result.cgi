@@ -34,7 +34,10 @@ EOD
 
 my $base_cgi = "/cgi-bin/index.cgi";
 my $JOBID = $q->param('JOBID');
+$JOBID =~ s/\s+//g;
  
+security_check($JOBID);
+
 if (defined $q->param('side')){
   if ($q->param('side') eq 'left' ) {result_left($JOBID);}
   else                              {result_right($JOBID);}
@@ -45,6 +48,17 @@ if (-e "$SL_session_dir/$JOBID/$JOBID.fail") { failed_job($JOBID); }
 if (-f "$SL_session_dir/$JOBID/$JOBID.ok") { completed_job($JOBID);} 
 if (-d "$SL_session_dir/$JOBID") { running_job($JOBID); }
 unknown_job($JOBID);
+
+sub security_check{
+  my $JOBID = shift;
+  if ($JOBID =~ /\D/) {
+    print $q->header("text/html");
+    print "Invalid job id";
+    print $q->end_html;
+
+    exit();
+  }
+}
 
 sub failed_job{
   my $JOBID = shift;
