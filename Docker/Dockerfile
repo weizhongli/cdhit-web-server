@@ -58,10 +58,18 @@ ENV PATH="/opt/cd-hit:/opt/cd-hit/cd-hit-auxtools:/opt/cd-hit/psi-cd-hit:/opt/nc
 
 EXPOSE 80 443
 
-CMD ["/etc/init.d/apache2", "start"]
+#### make it run foreground
+CMD ["/usr/sbin/apache2ctl", "-DFOREGROUND"]
 
+#### to build docker image
 # docker build --tag cdhit-server https://raw.githubusercontent.com/weizhongli/cdhit-web-server/master/Docker/Dockerfile
-# docker run -d -h cdhit-server --name cdhit-server -p 8088:80 -v `pwd`:/opt/data cdhit-server
+#### to start a container
 # docker run -d -h cdhit-server --name cdhit-server -p 8088:80                    cdhit-server
+#### to access local cdhit-server
+# go to http://localhost:8088/cdhit-web-server/
+
+
+#### optional
+# docker run -d -h cdhit-server --name cdhit-server -p 8088:80 -v `pwd`:/opt/data cdhit-server
 # docker run -it -p 8088:80                    cdhit-server bash
 
