@@ -30,6 +30,8 @@ RUN git clone https://github.com/weizhongli/cdhit-web-server.git && \
     cp -f Docker/server-config-docker.pl cgi-bin/server-config.pl && \
     ln -sf /opt/data output && \
     cd /opt && \
+    mkdir -p data && \
+    chmod -R a+rwx data && \
     rsync -av www/cdhit-web-server/etc/apache2 /etc && \
     cd /etc/apache2/mods-enabled && \
     ln -s ../mods-available/cgid* . 
@@ -40,6 +42,8 @@ RUN git clone https://github.com/weizhongli/cdhit-web-server.git && \
 ENV PATH="/opt/cd-hit:/opt/cd-hit/cd-hit-auxtools:/opt/cd-hit/psi-cd-hit:/opt/ncbi-blast-2.8.1+/bin:${PATH}"
 
 #### set apache2 ENVs
+## ENV APACHE_RUN_USER root
+## ENV APACHE_RUN_GROUP root
 ## ENV APACHE_RUN_USER www-data
 ## ENV APACHE_RUN_GROUP www-data
 ## ENV APACHE_LOG_DIR /var/log/apache2
@@ -57,4 +61,6 @@ EXPOSE 80 443
 CMD ["/etc/init.d/apache2 start"]
 
 # docker run -d -h cdhit-server --name cdhit-server -p 8088:80 -v `pwd`:/opt/data cdhit-server
+# docker run -d -h cdhit-server --name cdhit-server -p 8088:80                    cdhit-server
+# docker run -it -p 8088:80                    cdhit-server bash
 
