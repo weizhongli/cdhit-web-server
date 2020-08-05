@@ -58,8 +58,9 @@ ENV PATH="/opt/cd-hit:/opt/cd-hit/cd-hit-auxtools:/opt/cd-hit/psi-cd-hit:/opt/nc
 
 EXPOSE 80 443
 
-CMD ["/etc/init.d/apache2 start"]
+CMD ["/etc/init.d/apache2", "start"]
 
+# docker build --tag cdhit-server https://raw.githubusercontent.com/weizhongli/cdhit-web-server/master/Docker/Dockerfile
 # docker run -d -h cdhit-server --name cdhit-server -p 8088:80 -v `pwd`:/opt/data cdhit-server
 # docker run -d -h cdhit-server --name cdhit-server -p 8088:80                    cdhit-server
 # docker run -it -p 8088:80                    cdhit-server bash
