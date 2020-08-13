@@ -203,7 +203,12 @@ EOD
 
   # submit the job
   #my $cmd = `/opt/gridengine/bin/lx26-amd64/qsub $sh_fname > $JOBDIR/$JOBID.qsub.dump`;
-  my $cmd = `$qsub_exe $sh_fname 1>$JOBDIR/$JOBID.qsub.dump 2>$JOBDIR/$JOBID.qsub.err.dump`;
+  if ($qsub_exe eq "/bin/bash") {
+    my $cmd = `$qsub_exe $sh_fname 1>$JOBDIR/$JOBID.qsub.dump 2>$JOBDIR/$JOBID.qsub.err.dump &`;
+  }
+  else {
+    my $cmd = `$qsub_exe $sh_fname 1>$JOBDIR/$JOBID.qsub.dump 2>$JOBDIR/$JOBID.qsub.err.dump`;
+  }
 
   # return jobid
   return $JOBID;
@@ -329,7 +334,12 @@ EOD
 	## end env file
 
   # submit the job
-  my $cmd = `$qsub_exe $sh_fname 1>$JOBDIR/$JOBID.qsub.dump 2>$JOBDIR/$JOBID.qsub.err.dump`;
+  if ($qsub_exe eq "/bin/bash") {
+    my $cmd = `$qsub_exe $sh_fname 1>$JOBDIR/$JOBID.qsub.dump 2>$JOBDIR/$JOBID.qsub.err.dump &`;
+  }
+  else {
+    my $cmd = `$qsub_exe $sh_fname 1>$JOBDIR/$JOBID.qsub.dump 2>$JOBDIR/$JOBID.qsub.err.dump`;
+  }
 
   # return jobid
   return $JOBID;
