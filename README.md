@@ -9,6 +9,7 @@ docker run -d -h cdhit-server --name cdhit-server -p 8088:80 weizhongli1987/cdhi
 ```
 3) Now you can access the cdhit web server from
 > http://localhost:8088/cdhit-web-server
+
 And you can upload files to the local cdhit server, the same way as using the public cdhit web server.
 
 4) It is suggested to learn a bit more docker commands about how to start/stop/delete the docker container and how to manage the docker image.
