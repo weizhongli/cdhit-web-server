@@ -40,6 +40,8 @@ for some version of Apache2, you may need to
    cd /etc/apache2/mods-enabled; 
    ln -s ../mods-available/cgid* . 
 
+or to use command: a2enmod cgid
+
 3) download most up to date cd-hit and compile
 4) download NCBI blast+ package
 5) Edit cgi-bin/server-config
